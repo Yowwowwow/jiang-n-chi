@@ -3,33 +3,27 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>jiǎng n̄ chí</title>
-    <link rel="shortcut icon" href="TemplateData/jnc icon.png">
+    <title>Unity WebGL Player | jiǎng n̄ chí</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
   </head>
-  <style>
-  body {
-    overflow: hidden; /* Hide scrollbars */
-  }
-  </style>
   <body>
     <div id="unity-container" class="unity-desktop">
-      <canvas id="unity-canvas" width=auto height=auto></canvas>
+      <canvas id="unity-canvas" width=1920 height=1080></canvas>
       <div id="unity-loading-bar">
-	<img src="TemplateData/jnc icon.png" alt="kan" class="center" width="100" height="100">
-        <!--<div id="unity-logo"></div>-->
+        <div id="unity-logo"></div>
         <div id="unity-progress-bar-empty">
           <div id="unity-progress-bar-full"></div>
         </div>
       </div>
-      <!--<div id="unity-mobile-warning">
+      <div id="unity-mobile-warning">
         WebGL builds are not supported on mobile devices.
       </div>
       <div id="unity-footer">
         <div id="unity-webgl-logo"></div>
         <div id="unity-fullscreen-button"></div>
         <div id="unity-build-title">jiǎng n̄ chí</div>
-      </div>-->
+      </div>
     </div>
     <script>
       var buildUrl = "Build";
@@ -48,8 +42,8 @@
       var canvas = document.querySelector("#unity-canvas");
       var loadingBar = document.querySelector("#unity-loading-bar");
       var progressBarFull = document.querySelector("#unity-progress-bar-full");
-      // var fullscreenButton = document.querySelector("#unity-fullscreen-button");
-      // var mobileWarning = document.querySelector("#unity-mobile-warning");
+      var fullscreenButton = document.querySelector("#unity-fullscreen-button");
+      var mobileWarning = document.querySelector("#unity-mobile-warning");
 
       // By default Unity keeps WebGL canvas render target size matched with
       // the DOM size of the canvas element (scaled by window.devicePixelRatio)
@@ -63,13 +57,13 @@
         // Avoid draining fillrate performance on mobile devices,
         // and default/override low DPI mode on mobile browsers.
         config.devicePixelRatio = 1;
-        //mobileWarning.style.display = "block";
-        //setTimeout(() => {
-        //  mobileWarning.style.display = "none";
-        //}, 5000);
+        mobileWarning.style.display = "block";
+        setTimeout(() => {
+          mobileWarning.style.display = "none";
+        }, 5000);
       } else {
-        canvas.style.width = "100%";
-        canvas.style.height = "100%";
+        canvas.style.width = "1920px";
+        canvas.style.height = "1080px";
       }
       loadingBar.style.display = "block";
 
@@ -80,11 +74,11 @@
           progressBarFull.style.width = 100 * progress + "%";
         }).then((unityInstance) => {
           loadingBar.style.display = "none";
-          //fullscreenButton.onclick = () => {
-          //  unityInstance.SetFullscreen(1);
-          //};
+          fullscreenButton.onclick = () => {
+            unityInstance.SetFullscreen(1);
+          };
         }).catch((message) => {
-          //alert(message);
+          alert(message);
         });
       };
       document.body.appendChild(script);
