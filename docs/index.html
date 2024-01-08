@@ -28,16 +28,16 @@
       <div id="unity-footer">
         <div id="unity-webgl-logo"></div>
         <div id="unity-fullscreen-button"></div>
-        <div id="unity-build-title">yù túl chí</div>
+        <div id="unity-build-title">jiǎng n̄ chí</div>
       </div>-->
     </div>
     <script>
       var buildUrl = "Build";
       var loaderUrl = buildUrl + "/docs.loader.js";
       var config = {
-        dataUrl: buildUrl + "/docs.data",
-        frameworkUrl: buildUrl + "/docs.framework.js",
-        codeUrl: buildUrl + "/docs.wasm",
+        dataUrl: buildUrl + "/docs.data.br",
+        frameworkUrl: buildUrl + "/docs.framework.js.br",
+        codeUrl: buildUrl + "/docs.wasm.br",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "lì tŕ",
         productName: "jiǎng n̄ chí",
@@ -84,7 +84,7 @@
           //  unityInstance.SetFullscreen(1);
           //};
         }).catch((message) => {
-          alert(message);
+          //alert(message);
         });
       };
       document.body.appendChild(script);
